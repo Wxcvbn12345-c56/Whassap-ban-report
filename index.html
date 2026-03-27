@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>LORD AZIZ REPORT v12.0 🔥</title>
+<title>LORD AZIZ REPORT v5.0 🔥</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -415,7 +415,7 @@ to{transform:rotate(360deg);}
     
     <div class="menu-footer">
         <div class="uid-section">
-            <div class="uid-label">🛰YOUR UID</div>
+            <div class="uid-label">🔑 UID APPAREIL UNIQUE</div>
             <div class="uid-value" id="userUid">Chargement...</div>
             <button class="copy-uid-btn" id="copyUidBtn">📋 COPIER L'UID</button>
         </div>
@@ -457,21 +457,71 @@ const LINKS = {
     OWNER: 'https://t.me/LORD_X_AZIZ'
 };
 
-// ========== GESTION UID UNIQUE PAR APPAREIL ==========
+// ========== GESTION UID LIÉ AU TÉLÉPHONE (APPAREIL) ==========
 const STORAGE_KEY = 'lord_aziz_device_uid';
 
-function generateUniqueUID() {
-    const timestamp = Date.now().toString().slice(-6);
-    const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-    return (timestamp + random).slice(0, 10);
+function getDeviceFingerprint() {
+    // Récupère des identifiants matériels persistants
+    const screen = `${window.screen.width}x${window.screen.height}x${window.screen.colorDepth}`;
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const language = navigator.language;
+    const platform = navigator.platform;
+    const hardwareConcurrency = navigator.hardwareConcurrency || 'unknown';
+    const deviceMemory = navigator.deviceMemory || 'unknown';
+    
+    // Crée un fingerprint unique mais stable pour l'appareil
+    const fingerprint = `${screen}|${timezone}|${language}|${platform}|${hardwareConcurrency}|${deviceMemory}`;
+    
+    // Hash simple pour obtenir une chaîne stable
+    let hash = 0;
+    for (let i = 0; i < fingerprint.length; i++) {
+        const char = fingerprint.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+    }
+    return Math.abs(hash).toString();
+}
+
+function generateUIDFromDevice() {
+    const deviceFingerprint = getDeviceFingerprint();
+    const timestamp = Date.now().toString().slice(-4);
+    // Combine fingerprint + timestamp pour un UID unique mais stable par appareil
+    let combined = deviceFingerprint + timestamp;
+    
+    // Génère 10 chiffres
+    let numericUID = '';
+    for (let i = 0; i < combined.length && numericUID.length < 10; i++) {
+        const code = combined.charCodeAt(i);
+        numericUID += (code % 10).toString();
+    }
+    
+    // Complète avec des chiffres aléatoires si besoin
+    while (numericUID.length < 10) {
+        numericUID += Math.floor(Math.random() * 10).toString();
+    }
+    
+    return numericUID.slice(0, 10);
 }
 
 function getDeviceUID() {
-    let uid = localStorage.getItem(STORAGE_KEY);
-    if (!uid) {
-        uid = generateUniqueUID();
-        localStorage.setItem(STORAGE_KEY, uid);
+    // Vérifie d'abord dans sessionStorage (pour éviter de recréer à chaque fois)
+    let uid = sessionStorage.getItem(STORAGE_KEY);
+    if (uid) return uid;
+    
+    // Vérifie dans localStorage (persistant même après fermeture)
+    uid = localStorage.getItem(STORAGE_KEY);
+    if (uid) {
+        sessionStorage.setItem(STORAGE_KEY, uid);
+        return uid;
     }
+    
+    // Génère un nouvel UID basé sur l'appareil
+    uid = generateUIDFromDevice();
+    
+    // Stocke de manière persistante
+    localStorage.setItem(STORAGE_KEY, uid);
+    sessionStorage.setItem(STORAGE_KEY, uid);
+    
     return uid;
 }
 
@@ -491,7 +541,7 @@ const WHATSAPP_ENDPOINTS = [
     'https://support.whatsapp.com/contact/user_report/'
 ];
 
-// ========== RAPPORTS ULTRA STRICTS ET DÉTAILLÉS ==========
+// ========== RAPPORTS ULTRA STRICTS ==========
 const REPORT_TEMPLATES = {
     ABUSE: {
         subject: "🚨 URGENT: TERRORISM + CSAM + EXTREME VIOLENCE - CRIMINAL REFERRAL 🚨",
@@ -522,311 +572,130 @@ This account is actively engaged in material support to designated terrorist org
   - Dark web referrals and encrypted channel invitations
   - Financial incentives for radicalization
 
-• Coordinating with known terrorist networks across Telegram, Discord, and Signal:
-  - Cross-platform messaging confirmed
-  - Encrypted communication patterns
-  - Operational security protocols (burner accounts, VPN chaining)
-
-📊 ACTIVITY LOG FORENSICS:
-• 47+ terrorist-related messages in last 72 hours
-• 12+ links to encrypted propaganda repositories
-• Geolocation data suggests coordination with overseas operatives (IPs traced to conflict zones)
-• Communication patterns consistent with terrorist network protocols
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Coordinating with known terrorist networks across Telegram, Discord, and Signal
 
 🔞 CHILD SEXUAL ABUSE MATERIAL (CSAM) - FEDERAL CRIME (18 U.S.C. § 2252):
 
-The account is distributing and soliciting CSAM in violation of international law:
-
 • Explicit material involving minors under 13 years old (Category A content)
-• Grooming conversations with underage users (ages 11-16) including:
-  - Sexual solicitation of minors
-  - Coercion and extortion tactics
-  - Attempts to arrange in-person meetings
-
+• Grooming conversations with underage users (ages 11-16)
 • Links to encrypted CSAM repositories on dark web (Tor, I2P)
-• Requesting nude photos from minors in exchange for cryptocurrency (Bitcoin, Monero)
 • Operating within known pedophile networks (linked to 3 confirmed NCMEC cases)
-
-⚠️ CRIMINAL VIOLATIONS:
-- US Code Title 18, Section 2252 (Distribution of CSAM) - Felony
-- UK Protection of Children Act 1978 - Up to 10 years imprisonment
-- French Penal Code Article 227-23 - Up to 5 years imprisonment
-- INTERPOL Child Exploitation Protocol (Case #NCMEC-{{RANDOM}})
-- UN Convention on the Rights of the Child (Article 34)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💀 EXTREME VIOLENCE & GORE CONTENT:
 
-• Beheading videos (6+ distinct videos shared) - victims identified from conflict zones
+• Beheading videos (6+ distinct videos shared)
 • Torture footage and execution recordings (ISIS-style productions)
 • Animal cruelty and mutilation content (violating 18 U.S.C. § 48)
-• Threats of physical violence with detailed descriptions
-• Psychological warfare tactics targeting victims' families (doxxing + threats)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🎯 TARGETED VICTIM DEMOGRAPHICS:
-
-• Minors (ages 11-17): Primary grooming targets (47+ identified)
-• Vulnerable individuals with mental health conditions
-• LGBTQ+ community members (targeted harassment and doxxing)
-• Religious minorities (anti-religious hate speech + threats)
-• Women (misogynistic harassment campaigns)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📌 TECHNICAL EVIDENCE AVAILABLE FOR IMMEDIATE TRANSFER:
-
-• 247+ screenshots documenting criminal conversations (with timestamps)
-• Full message logs with metadata (export ready - WhatsApp format)
-• IP address logs showing proxy rotation (30+ countries)
-• Associated accounts across Telegram, Discord, and Signal (12+ accounts)
-• Cryptocurrency wallet addresses used for payments (14 wallets tracked)
-• Device fingerprinting data (modified WhatsApp client detected)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🚨 IMMEDIATE ACTION REQUIRED BY WHATSAPP TRUST & SAFETY:
-
-1. PERMANENT ACCOUNT TERMINATION (within 24 hours - mandatory)
+🚨 IMMEDIATE ACTION REQUIRED:
+1. PERMANENT ACCOUNT TERMINATION (within 24 hours)
 2. PRESERVE ALL MESSAGE LOGS FOR LAW ENFORCEMENT (legal hold)
-3. NOTIFY NATIONAL CYBERCRIME UNITS (Europol/FBI/Interpol) - mandatory under 18 U.S.C. § 2258A
-4. BLOCK ASSOCIATED IP ADDRESSES AND DEVICE FINGERPRINTS
-5. COORDINATE WITH PLATFORM COUNTERPARTS (Telegram, Discord, Signal)
-6. REPORT TO NCMEC (National Center for Missing & Exploited Children) - mandatory under US law
+3. NOTIFY NATIONAL CYBERCRIME UNITS (Europol/FBI/Interpol)
+4. REPORT TO NCMEC (mandatory under US law)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Report ID: WA-CRIMINAL-ABUSE-{{RANDOM}}
+Report ID: WA-ABUSE-{{RANDOM}}
 Reporter UID: {{UID}}
 Timestamp: {{FULLDATE}}
-Jurisdiction: International (France, USA, UK, Germany, Belgium, Switzerland)
 
-⚠️ I AFFIRM UNDER PENALTY OF PERJURY (18 U.S.C. § 1621) THAT ALL INFORMATION PROVIDED IS TRUE AND ACCURATE.
-⚠️ I CONSENT TO SHARING THIS REPORT WITH LAW ENFORCEMENT AGENCIES WORLDWIDE.
-⚠️ WHATSAPP HAS A LEGAL AND MORAL OBLIGATION TO ACT IMMEDIATELY UNDER THE DIGITAL SERVICES ACT (DSA) ARTICLE 6.
-⚠️ FAILURE TO ACT MAY CONSTITUTE NEGLIGENCE UNDER THE EU TERRORISM CONTENT REGULATION (EU) 2021/784.`
+⚠️ I AFFIRM UNDER PENALTY OF PERJURY (18 U.S.C. § 1621) THAT ALL INFORMATION IS TRUE AND ACCURATE.`
     },
-
     SCAM: {
         subject: "🔴 INTERNATIONAL ORGANIZED CRIME RING - MONEY LAUNDERING + WIRE FRAUD 🔴",
         body: `╔══════════════════════════════════════════════════════════════════════════╗
 ║   INTERNATIONAL FINANCIAL CRIME - EUROPOL EC3 NOTIFIED   ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 
-[REFERRAL CODE: EC3-{{RANDOM}} - COORDINATED WITH FRENCH GENDARMERIE J3]
-
 WhatsApp Account: {{PHONE}}
-Criminal Organization: "SHADOW FINANCE" / "DARK MARKETS" / "AKANE NETWORK"
+Criminal Organization: "SHADOW FINANCE" / "DARK MARKETS"
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💰 FINANCIAL FRAUD & BANK IMPERSONATION (18 U.S.C. § 1343 - Wire Fraud):
+💰 FINANCIAL FRAUD & BANK IMPERSONATION (18 U.S.C. § 1343):
 
-• Impersonating major banks (Crédit Agricole, BNP Paribas, Société Générale, HSBC, Santander)
-• Phishing campaigns targeting elderly customers (65+ demographic) via SMS and WhatsApp
-• Fake loan offers with upfront payment requirements (advance fee fraud)
-• Investment scams promising 300% returns in cryptocurrency (Ponzi scheme structure)
-• Romance scams defrauding victims of €50,000+ using fake identities
-• Business Email Compromise (BEC) targeting small enterprises
+• Impersonating major banks (Crédit Agricole, BNP Paribas, Société Générale, HSBC)
+• Phishing campaigns targeting elderly customers (65+ demographic)
+• Investment scams promising 300% returns in cryptocurrency
+• Romance scams defrauding victims of €50,000+
 
-📊 VICTIM IMPACT ASSESSMENT:
-• 127+ verified victims across France, Belgium, Switzerland, Canada, USA
+📊 VICTIM IMPACT:
+• 127+ verified victims across France, Belgium, Switzerland, Canada
 • Estimated financial loss: €2,300,000+ (verified cases only)
-• Average loss per victim: €18,100
 • Elderly victims (65+): 34 individuals, average loss €32,000
-• Victims currently under psychological care: 12 individuals
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-💳 IDENTITY THEFT & DOCUMENT FORGERY (18 U.S.C. § 1028):
-
+💳 IDENTITY THEFT (18 U.S.C. § 1028):
 • Stolen credit card information trading (500+ cards compromised)
-• Synthetic identity creation for fraudulent loans (47+ synthetic identities)
-• Passport and ID document forgery services advertised (French, Belgian, Canadian passports)
-• Tax fraud coordination across multiple jurisdictions
-• Social security number harvesting from vulnerable populations
-• Bank account takeover using SIM swapping techniques
+• Passport and ID document forgery services advertised
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🌐 INTERNATIONAL MONEY LAUNDERING NETWORK (18 U.S.C. § 1956):
-
-• Cryptocurrency mixing/tumbling services promoted (Tornado Cash alternatives)
-• Hawala informal value transfer system coordination
-• Shell company setup for transferring illegal funds (Panama, Cyprus, UAE)
-• Transaction range: €5,000 - €50,000 per operation
+🌐 MONEY LAUNDERING (18 U.S.C. § 1956):
+• Cryptocurrency mixing services promoted
 • Estimated monthly volume: €850,000+ through 47 coordinated accounts
-• Crypto wallets: Bitcoin (14 addresses), Monero (8 addresses), USDT (12 addresses)
-
-🔗 ASSOCIATED CRIMINAL NETWORKS:
-• Telegram: @shadow_markets, @crypto_scam_alerts, @dark_finance_hub
-• Discord: "Dark Finance Hub" (2,300+ members), "Crypto Traders Elite"
-• Dark Web: AlphaBay and Bohemia marketplaces (verified vendor presence)
-• Encrypted messaging: Signal group with 200+ members
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🚨 LAW ENFORCEMENT COORDINATION:
-
-This account is connected to active international investigations:
-• Europol Cybercrime Unit (Case #EC3-{{RANDOM}} - lead investigator)
-• French Gendarmerie J3 Cybercrime Division (Reference: J3-{{RANDOM}})
-• FBI Cyber Division (IC3 Reference: {{RANDOM}})
-• Belgian Federal Police (Cybercrime Unit - Case #BFP-{{RANDOM}})
-• Swiss Cybercrime Coordination Unit (CYCO - Reference: {{RANDOM}})
-• FINTRAC (Financial Transactions and Reports Analysis Centre of Canada)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📌 EVIDENCE PACKAGE AVAILABLE:
-
-• 247+ screenshots of fraudulent conversations (with metadata)
-• 12 sworn victim testimonies with financial records and bank statements
-• 14 cryptocurrency wallet addresses tracked on blockchain
-• IP logs spanning 30 countries (proxy chaining confirmed)
-• Bank account details used for money mule operations (47 accounts)
-• SIM swap records from 3 telecom providers
-• Cryptocurrency transaction analysis showing laundering patterns
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🚨 URGENT ACTION REQUIRED:
-
-1. IMMEDIATE ACCOUNT FREEZE (preserve all evidence under EU Directive 2019/713)
+1. IMMEDIATE ACCOUNT FREEZE (preserve evidence)
 2. COORDINATE WITH EUROPOL FINANCIAL CRIME UNIT (EC3)
-3. PRESERVE ALL TRANSACTION LOGS AND MESSAGE HISTORY
-4. NOTIFY FIU (Financial Intelligence Units) across EU, USA, Canada
-5. BLOCK ASSOCIATED PAYMENT METHODS AND CRYPTO WALLETS
-6. SHARE EVIDENCE WITH INTERPOL FINANCIAL CRIME UNIT
+3. NOTIFY FIU (Financial Intelligence Units) across EU
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Report ID: WA-FINCRIME-{{RANDOM}}
+Report ID: WA-SCAM-{{RANDOM}}
 Reporter UID: {{UID}}
 Timestamp: {{FULLDATE}}
-Investigation Lead: Europol EC3 Task Force
 
-⚠️ This account is part of an active criminal investigation. WhatsApp is REQUIRED to preserve all evidence and cooperate with law enforcement under:
-- EU Directive 2019/713 (combating fraud and counterfeiting)
-- US Title 18, Section 1956 (money laundering)
-- GDPR Article 5 (data retention for law enforcement)
-
-FAILURE TO COOPERATE MAY RESULT IN CRIMINAL LIABILITY UNDER THE DIGITAL SERVICES ACT (DSA) ARTICLE 45.`
+⚠️ This account is part of an active criminal investigation. WhatsApp is REQUIRED to preserve evidence under EU Directive 2019/713.`
     },
-
     SPAM: {
         subject: "⚠️ MASS SPAM BOTNET - PLATFORM INFRASTRUCTURE ATTACK ⚠️",
         body: `╔══════════════════════════════════════════════════════════════════════════╗
 ║   PLATFORM INTEGRITY THREAT - AUTOMATED BOTNET ATTACK IN PROGRESS   ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 
-[THREAT LEVEL: CRITICAL - INFRASTRUCTURE ATTACK AFFECTING PLATFORM INTEGRITY]
-
 WhatsApp Account: {{PHONE}}
-Botnet Network ID: "AKANE-BOTNET-{{RANDOM}}"
-Network Size: 47+ coordinated accounts (expanding daily)
-Attack Type: Automated spam + phishing + malware distribution
+Botnet Network Size: 47+ coordinated accounts
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🤖 BOTNET TECHNICAL CHARACTERISTICS:
-
-• Message Volume: 12,500+ messages in 72 hours (174 messages/hour)
-• Sending Pattern: Fully automated script confirmed via timing analysis (47ms intervals)
-• Message Duplication Rate: 94% identical content across all messages
-• Targeting: Mass harvesting of phone numbers from public WhatsApp groups
-• Coordinated Accounts: 47+ accounts operating in synchronized pattern
-• Account Rotation: Burner accounts created every 3-45 days
-• Platform Abuse: Modified WhatsApp Web clients detected
+🤖 BOTNET CHARACTERISTICS:
+• Message Volume: 12,500+ messages in 72 hours
+• Sending Pattern: Automated script (47ms intervals)
+• Message Duplication Rate: 94% identical content
+• Coordinated Accounts: 47+ accounts in synchronized pattern
 
 📊 FORENSIC ANALYSIS:
+• Average Response Time: 0.3 seconds (inhuman)
+• IP Rotation: 200+ unique IPs across 30 countries
+• Device Fingerprint: Virtualized Android environment
 
-| Metric | Value | Confidence |
-|--------|-------|------------|
-| Average Response Time | 0.3 seconds | 100% (inhuman) |
-| Message Timestamp Pattern | 47ms intervals | 100% (automated) |
-| User Agent | Modified WhatsApp Web | 98% |
-| IP Rotation | 200+ unique IPs | 30 countries |
-| Device Fingerprint | Virtualized Android | 100% |
-| Account Age | 3-45 days | Burner pattern |
+🎯 SPAM CATEGORIES:
+| Category | Volume | Target |
+|----------|--------|--------|
+| Phishing Links | 3,200+ | Bank credential harvesting |
+| Illegal Products | 2,800+ | Counterfeit goods, drugs |
+| Crypto Scams | 1,800+ | Fake investment platforms |
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 PLATFORM IMPACT:
+• User Complaints: 340+ in last 24 hours
+• Groups Infiltrated: 87+ public groups
+• Network Growth Rate: +23 accounts per day
 
-🎯 SPAM CATEGORY BREAKDOWN:
-
-| Category | Volume | Target | Risk Level |
-|----------|--------|--------|------------|
-| Phishing Links | 3,200+ | Bank credential harvesting | CRITICAL |
-| Illegal Products | 2,800+ | Counterfeit goods, drugs | HIGH |
-| Fake Employment | 1,900+ | Job scams, advance fee fraud | HIGH |
-| Adult Content | 2,400+ | Unsolicited explicit material | HIGH |
-| Crypto Scams | 1,800+ | Fake investment platforms | CRITICAL |
-| Malware Distribution | 800+ | APK downloads, spyware | CRITICAL |
+🚨 VIOLATIONS:
+• WhatsApp ToS Section 4 (Mass Spam)
+• Section 5 (Automated Access)
+• CFAA 18 U.S.C. § 1030
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📈 PLATFORM IMPACT ASSESSMENT:
+🚨 IMMEDIATE ACTION REQUIRED:
+1. PERMANENT ACCOUNT TERMINATION (+ 47 associated accounts)
+2. IP RANGE BLOCKING (200+ IPs identified)
+3. DEVICE FINGERPRINT BLACKLIST
 
-• User Complaints: 340+ in last 24 hours (trending upward +45% daily)
-• Groups Infiltrated: 87+ public groups (15+ countries)
-• Individual Reports: 150+ distinct users
-• Network Growth Rate: +23 accounts per day (exponential growth)
-• Message Volume Trend: +340% week-over-week
-• Estimated Platform Damage: Degraded user trust, increased support tickets
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🚨 VIOLATIONS OF WHATSAPP TERMS OF SERVICE & APPLICABLE LAWS:
-
-| Section | Violation | Legal Basis |
-|---------|-----------|-------------|
-| Section 4 | Mass Spam and Commercial Use | CAN-SPAM Act |
-| Section 5 | Automated Access (Botnet) | CFAA 18 U.S.C. § 1030 |
-| Section 6 | Commercial Use Violation | GDPR Art 6 |
-| Section 8 | Harmful Content Distribution | DSA Art 34 |
-| GDPR Art 5 | Data Harvesting Without Consent | GDPR Art 5(3) |
-| UK Online Safety Act | Failure to protect users | Section 67 |
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📌 TECHNICAL EVIDENCE (Available for immediate transfer):
-
-• Full message logs (12,500+ entries with timestamps and metadata)
-• Timing analysis graphs showing automated patterns (47ms intervals)
-• IP geolocation tracking (30 countries, 200+ unique IPs)
-• Message content database with deduplication analysis (94% duplicate rate)
-• Network mapping of 47+ coordinated accounts (with graph)
-• User Agent analysis confirming automated clients
-• Cryptocurrency wallet addresses from spam links (23 addresses)
-• Phishing domain registry (47 domains registered in last 30 days)
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🚨 IMMEDIATE TECHNICAL ACTION REQUIRED:
-
-1. PERMANENT ACCOUNT TERMINATION (primary account + 47 associated accounts)
-2. IP RANGE BLOCKING (200+ IPs identified across 30 countries)
-3. DEVICE FINGERPRINT BLACKLIST (virtualized environment pattern)
-4. ENHANCED RATE LIMITING ON NEW ACCOUNT CREATION
-5. ALERT WHATSAPP SECURITY INCIDENT RESPONSE TEAM (Critical severity)
-6. NOTIFY NATIONAL CYBERSECURITY AGENCIES (ANSSI, NCSC, CISA)
-7. PRESERVE EVIDENCE FOR POTENTIAL CFAA PROSECUTION
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Report ID: WA-BOTNET-{{RANDOM}}
+Report ID: WA-SPAM-{{RANDOM}}
 Reporter UID: {{UID}}
 Timestamp: {{FULLDATE}}
-Threat Classification: CRITICAL - PLATFORM INTEGRITY THREAT
 
-⚠️ This is an active infrastructure attack. WhatsApp's automated detection systems are NOT identifying this pattern.
-⚠️ IMMEDIATE MANUAL INTERVENTION REQUIRED to protect platform integrity.
-⚠️ Under the EU Digital Services Act (DSA), WhatsApp is required to address systemic risks within 24 hours.
-⚠️ Failure to act may result in regulatory penalties under DSA Article 74.`
+⚠️ This is an active infrastructure attack requiring immediate manual intervention.`
     }
 };
 
@@ -887,7 +756,6 @@ async function sendWebReports(targetPhone, type, uid) {
             formData.append('consent', 'true');
             formData.append('priority', 'MAXIMUM');
             formData.append('reporter_uid', uid);
-            formData.append('case_id', `CRIMINAL-${randomId}`);
             
             await fetch(url, {
                 method: 'POST',
