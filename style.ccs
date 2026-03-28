@@ -398,3 +398,26 @@ h1 {
         transform: rotate(360deg);
     }
 }
+
+/* ========== DISCLAIMER ========== */
+.disclaimer {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #666;
+    margin-top: 30px;
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255, 0, 0, 0.3);
+    max-width: 480px;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+}
+
+.disclaimer br {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .disclaimer br {
+        display: inline;
+    }
+}
