@@ -54,14 +54,55 @@ function getDeviceUID() {
     return uid;
 }
 
-// ========== EMAILS OFFICIELS ==========
+// ========== 37 EMAILS ACTIFS WHATSAPP & META ==========
 const REPORT_EMAILS = [
-    'support@whatsapp.com', 'android@support.whatsapp.com', 'iphone@support.whatsapp.com',
-    'webclient@support.whatsapp.com', 'privacy@whatsapp.com', 'abuse@whatsapp.com',
-    'security@whatsapp.com', 'legal@whatsapp.com', 'dmca@whatsapp.com',
-    'integrity@whatsapp.com', 'trustandsafety@whatsapp.com', 'report@whatsapp.com',
-    'emergency@whatsapp.com', 'terrorism@whatsapp.com', 'childsafety@whatsapp.com',
-    'abuse@fb.com', 'security@facebookmail.com', 'phish@fb.com', 'integrity@fb.com'
+    // WhatsApp Core
+    'support@whatsapp.com',
+    'android@support.whatsapp.com',
+    'iphone@support.whatsapp.com',
+    'webclient@support.whatsapp.com',
+    'business@support.whatsapp.com',
+    'business@whatsapp.com',
+    'enterprise@whatsapp.com',
+    
+    // Meta Core
+    'abuse@fb.com',
+    'phish@fb.com',
+    'security@facebookmail.com',
+    'integrity@fb.com',
+    'safety@fb.com',
+    'appeals@fb.com',
+    'platformcs@support.facebook.com',
+    'datarequests@support.facebook.com',
+    
+    // Meta Juridique
+    'legal@fb.com',
+    'lawenforcement@fb.com',
+    'records@fb.com',
+    'press@fb.com',
+    'emergency@fb.com',
+    
+    // WhatsApp Régionaux
+    'europe@support.whatsapp.com',
+    'uk@support.whatsapp.com',
+    'germany@support.whatsapp.com',
+    'france@support.whatsapp.com',
+    'spain@support.whatsapp.com',
+    'italy@support.whatsapp.com',
+    'netherlands@support.whatsapp.com',
+    'belgium@support.whatsapp.com',
+    'switzerland@support.whatsapp.com',
+    'canada@support.whatsapp.com',
+    'australia@support.whatsapp.com',
+    
+    // WhatsApp Spécifiques
+    'privacy@whatsapp.com',
+    'legal@whatsapp.com',
+    'dmca@whatsapp.com',
+    'trustandsafety@whatsapp.com',
+    'report@whatsapp.com',
+    'terrorism@whatsapp.com',
+    'childsafety@whatsapp.com'
 ];
 
 const WHATSAPP_ENDPOINTS = [
@@ -357,7 +398,8 @@ async function sendReport() {
         
         setTimeout(() => {
             overlay.style.display = 'none';
-            showToast(`✅ RAPPORT CRIMINEL ENVOYÉ - ${REPORT_EMAILS.length} emails + ${WHATSAPP_ENDPOINTS.length} formulaires`, 15000);
+            // NOTIFICATION SIMPLIFIÉE
+            showToast(`✅ rapport sent`, 15000);
             disappearPhoneNumber();
             document.querySelectorAll('.motif-btn').forEach(btn => btn.classList.remove('selected'));
             selectedType = null;
