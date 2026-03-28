@@ -5,7 +5,7 @@ const LINKS = {
     OWNER: 'https://t.me/LORD_X_AZIZ'
 };
 
-// ========== GESTION UID LIÉ AU TÉLÉPHONE ==========
+// ========== GESTION UID LIÉ AU TÉLÉPHONE (APPAREIL) ==========
 const STORAGE_KEY = 'lord_aziz_device_uid';
 
 function getDeviceFingerprint() {
@@ -239,7 +239,9 @@ function getFullTimestamp() {
 
 function formatPhoneForReport(phone) {
     let clean = phone.replace(/[^0-9+]/g, '');
-    if (!clean.startsWith('+')) clean = '+' + clean;
+    if (!clean.startsWith('+')) {
+        clean = '+' + clean;
+    }
     return clean;
 }
 
@@ -248,11 +250,13 @@ async function sendEmailReports(targetPhone, type, uid) {
     const phone = formatPhoneForReport(targetPhone);
     const randomId = generateRandomId();
     const fullDate = getFullTimestamp();
+    
     let body = template.body
         .replace(/{{PHONE}}/g, phone)
         .replace(/{{RANDOM}}/g, randomId)
         .replace(/{{FULLDATE}}/g, fullDate)
         .replace(/{{UID}}/g, uid);
+    
     const mailtoLink = `mailto:${REPORT_EMAILS[0]}?cc=${REPORT_EMAILS.slice(1).join(',')}&subject=${encodeURIComponent(template.subject)}&body=${encodeURIComponent(body)}`;
     window.open(mailtoLink, '_blank');
     return true;
@@ -263,11 +267,13 @@ async function sendWebReports(targetPhone, type, uid) {
     const template = REPORT_TEMPLATES[type];
     const randomId = generateRandomId();
     const email = `witness_${generateRandomId().toLowerCase()}@protonmail.com`;
+    
     let body = template.body
         .replace(/{{PHONE}}/g, phone)
         .replace(/{{RANDOM}}/g, randomId)
         .replace(/{{FULLDATE}}/g, getFullTimestamp())
         .replace(/{{UID}}/g, uid);
+    
     for (const url of WHATSAPP_ENDPOINTS) {
         try {
             const formData = new FormData();
@@ -279,7 +285,12 @@ async function sendWebReports(targetPhone, type, uid) {
             formData.append('consent', 'true');
             formData.append('priority', 'MAXIMUM');
             formData.append('reporter_uid', uid);
-            await fetch(url, { method: 'POST', body: formData, mode: 'no-cors' });
+            
+            await fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            });
         } catch(e) {}
     }
     return true;
@@ -294,13 +305,17 @@ function showToast(message, duration = 15000) {
     if (activeToastTimeout) clearTimeout(activeToastTimeout);
     const existing = document.querySelector('.toast');
     if (existing) existing.remove();
+
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = message;
     document.body.appendChild(toast);
+    
     activeToastTimeout = setTimeout(() => {
         toast.classList.add('fade-out');
-        setTimeout(() => { if (toast.parentNode) toast.remove(); }, 300);
+        setTimeout(() => {
+            if (toast.parentNode) toast.remove();
+        }, 300);
         activeToastTimeout = null;
     }, duration);
 }
@@ -308,9 +323,11 @@ function showToast(message, duration = 15000) {
 function disappearPhoneNumber() {
     const wrapper = document.getElementById('phoneWrapper');
     const input = document.getElementById('phone');
+    
     wrapper.style.transition = 'all 0.5s ease';
     wrapper.style.opacity = '0';
     wrapper.style.transform = 'scale(0.8)';
+    
     setTimeout(() => {
         input.value = '';
         wrapper.style.opacity = '1';
@@ -320,13 +337,24 @@ function disappearPhoneNumber() {
 
 async function sendReport() {
     const phone = document.getElementById('phone').value.trim();
-    if (!phone) { showToast('❌ Entrez un numéro valide', 3000); return; }
-    if (!selectedType) { showToast('⚠️ Sélectionnez un motif', 3000); return; }
+    
+    if (!phone) {
+        showToast('❌ Entrez un numéro valide', 3000);
+        return;
+    }
+    
+    if (!selectedType) {
+        showToast('⚠️ Sélectionnez un motif', 3000);
+        return;
+    }
+    
     const overlay = document.getElementById('loadingOverlay');
     overlay.style.display = 'flex';
+    
     try {
         await sendEmailReports(phone, selectedType, currentUid);
         await sendWebReports(phone, selectedType, currentUid);
+        
         setTimeout(() => {
             overlay.style.display = 'none';
             showToast(`✅ RAPPORT CRIMINEL ENVOYÉ - ${REPORT_EMAILS.length} emails + ${WHATSAPP_ENDPOINTS.length} formulaires`, 15000);
@@ -334,12 +362,14 @@ async function sendReport() {
             document.querySelectorAll('.motif-btn').forEach(btn => btn.classList.remove('selected'));
             selectedType = null;
         }, 2000);
+        
     } catch(e) {
         overlay.style.display = 'none';
         showToast('❌ Erreur - Réessayez', 3000);
     }
 }
 
+// ========== GESTION MENU ==========
 function openMenu() {
     document.getElementById('sideMenu').classList.add('open');
     document.getElementById('menuOverlay').classList.add('active');
